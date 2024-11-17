@@ -10,8 +10,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4.2.2
       #- uses: actions/setup-node@v4.1.0
-      - run: npm i 
+      - run: cd ./frontend && npm i 
       - name: Lint
         run: cd ./frontend && npm run lint-fix
       - name: Build
-        run: npm run build
+        run: cd ./frontend && npm run build
