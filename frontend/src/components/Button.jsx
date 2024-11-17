@@ -1,4 +1,4 @@
-export function Button() {
+export function Button () {
   return (
     <button>Hola mundo</button>
   )
