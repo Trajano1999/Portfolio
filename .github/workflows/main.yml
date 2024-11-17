@@ -8,5 +8,9 @@ jobs:
   scan:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Hello World'
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+      - name: Hello World
         run: echo "Hello World!"
+      - name: Files
+        run: ls -la
