@@ -2,5 +2,6 @@
 
 Cosas por hacer:
 
-- Instalar standard 
-- Crear análisis automático
+[x] Inicializar proyecto en JavaScipt con Vite
+[x] Instalar standard
+[ ] Crear análisis automático con GitHub Actions
