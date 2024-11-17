@@ -2,11 +2,11 @@ name: main
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
 
 jobs:
   scan:
     runs-on: ubuntu-lastest
     steps:
-      - name: HelloWorld
+      - name: 'Hello World'
         run: echo "Hello World!"
