@@ -13,4 +13,4 @@ jobs:
       - name: Hello World
         run: echo "Hello World!"
       - name: Files
-        run: ls -la
+        run: node --version
