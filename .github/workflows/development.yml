@@ -1,16 +1,16 @@
-name: Main Workflow
+name: Development Workflow
 
 on:
   push:
     branches:
-      - main
+      - development
   pull_request:
     branches:
-      - main
+      - development
 
 jobs:
   scan:
-    name: Lint, Scan, Build and Deploy
+    name: Lint, Scan and Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
