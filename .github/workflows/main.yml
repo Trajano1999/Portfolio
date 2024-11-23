@@ -1,4 +1,4 @@
-name: Portfolio CI
+name: Portfolio Workflow
 
 on:
   push:
@@ -10,11 +10,20 @@ on:
 
 jobs:
   scan:
+    name: Check, Lint, Scan and Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4.2.2
-      - run: cd ./frontend && npm i --no-fund --no-audit
-      - name: Lint
-        run: cd ./frontend && npm run lint-fix
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Install dependencies
+        run: npm i --no-fund --no-audit
+        working-directory: ./frontend
+
+      - name: Apply linter
+        run: npm run lint-fix
+        working-directory: ./frontend
+
       - name: Build
-        run: cd ./frontend && npm run build
+        run: npm run build
+        working-directory: ./frontend
