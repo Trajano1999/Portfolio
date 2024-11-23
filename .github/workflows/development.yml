@@ -10,7 +10,7 @@ on:
 
 jobs:
   scan:
-    name: Lint, Scan and Build
+    name: Lint and SAST Scan
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -22,8 +22,4 @@ jobs:
 
       - name: Apply linter
         run: npm run lint-fix
-        working-directory: ./frontend
-
-      - name: Build
-        run: npm run build
         working-directory: ./frontend
