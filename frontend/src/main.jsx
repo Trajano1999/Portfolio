@@ -1,11 +1,13 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import './main.css'
 
 // Components
-import { Button } from './components/Button'
+import { Menu } from './components/Menu/Menu'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Button />
+    <Menu />
+    <div className='prueba'>Hola</div>
   </StrictMode>
 )
