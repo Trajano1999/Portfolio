@@ -6,6 +6,7 @@ on:
     types: [opened, synchronize, reopened]
 
 permissions:
+  actions: read
   contents: read
   security-events: write
 
@@ -41,31 +42,9 @@ jobs:
         uses: patrickedqvist/wait-for-vercel-preview@v1.3.3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          max_timeout: 120
+          max_timeout: 180
           check_interval: 5
-
-      - name: Verify deployment
-        run: |
-          URL="${{ steps.vercel.outputs.url }}"
-
-          if [ -z "$URL" ]; then
-            echo "❌ No preview URL found"
-            exit 1
-          fi
-
-          STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
-            -H "x-vercel-protection-bypass: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}" \
-            "$URL")
-
-          echo "Deployment URL: $URL"
-          echo "HTTP status: $STATUS"
-
-          if [ "$STATUS" != "200" ]; then
-            echo "❌ Deployment returned status $STATUS"
-            exit 1
-          fi
-
-          echo "✅ Deployment accessible"
+          vercel_protection_bypass_header: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
 
       - name: Run DAST analysis
         uses: zaproxy/action-baseline@v0.15.0
